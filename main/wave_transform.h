@@ -5,7 +5,7 @@
 
 #include "esp_dsp.h"
 
-#define WAVE_TRANSFORM_TAG  ("WAVE_TRANSFORM_H_")
+#define WAVE_TRANSFORM_TAG ("WAVE_TRANSFORM_H_")
 
 typedef struct wave_config {
     float amplitude;

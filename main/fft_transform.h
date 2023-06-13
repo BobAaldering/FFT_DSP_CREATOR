@@ -3,16 +3,21 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <float.h>
 
 #include "esp_dsp.h"
 
+#include "display_communicator.h"
 #include "window_transform.h"
 
-#define FFT_TRANSFORM_TAG  ("FFT_TRANSFORM_H_")
+#define FFT_TRANSFORM_TAG ("FFT_TRANSFORM_H_")
+
 
 typedef struct fft_data {
     bool fft_is_initialized;
 } fft_data_t;
+
+extern SSD1306_t oled_display;
 
 extern void initialize_fft_f32(fft_data_t* fft_data);
 extern void de_initialize_fft_f32(fft_data_t* fft_data);

@@ -80,6 +80,8 @@ void apply_fft_f32(fft_data_t* fft_data, float* samples, window_config_t window_
     ESP_LOGI(FFT_TRANSFORM_TAG, "Signal in absolute scale:");
     dsps_view(fft_y_cf_magnitude, sample_length / 2, 64, 10,  0, 2, '|');
 
+    oled_view_fft(fft_y_cf_real_part, sample_length / 2, ssd1306_get_width(&oled_display), ssd1306_get_height(&oled_display), 0, 50);
+
     free(fft_window);
     free(fft_y_cf);
 }

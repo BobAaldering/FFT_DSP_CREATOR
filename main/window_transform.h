@@ -5,7 +5,7 @@
 
 #include "esp_dsp.h"
 
-#define WINDOW_TRANSFORM_TAG  ("WINDOW_TRANSFORM_H_")
+#define WINDOW_TRANSFORM_TAG ("WINDOW_TRANSFORM_H_")
 
 typedef void (*window_function)(float* window, int length);
 

@@ -8,3 +8,9 @@ sdkconfig.old
 
 # Ignore components that are automatically managed by ESP_IDF:
 managed_components/
+
+# Ignore custom components:
+components/
+
+# Ignore the Wi-Fi settings:
+main/wifi_pass.h
