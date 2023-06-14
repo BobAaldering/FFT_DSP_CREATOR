@@ -18,6 +18,6 @@ typedef enum window_config {
     FLAT_TOP_WINDOW_F32
 } window_config_t;
 
-extern bool apply_window_function(float* window, window_config_t window_config, size_t window_length);
+extern esp_err_t apply_window_function(float* window, window_config_t window_config, size_t window_length);
 
 #endif

@@ -19,9 +19,9 @@ typedef struct fft_data {
 
 extern SSD1306_t oled_display;
 
-extern void initialize_fft_f32(fft_data_t* fft_data);
-extern void de_initialize_fft_f32(fft_data_t* fft_data);
+extern esp_err_t initialize_fft_f32(fft_data_t* fft_data);
+extern esp_err_t de_initialize_fft_f32(fft_data_t* fft_data);
 
-extern void apply_fft_f32(fft_data_t* fft_data, float* samples, window_config_t window_config, size_t sample_length);
+extern esp_err_t apply_fft_f32(fft_data_t* fft_data, float* samples, window_config_t window_config, size_t sample_length);
 
 #endif

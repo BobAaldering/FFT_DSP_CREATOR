@@ -16,6 +16,7 @@ void app_main() {
     ESP_ERROR_CHECK(nvs_flash_init());
 
     initialize_oled(OLED_WIDTH, OLED_HEIGHT);
+    oled_view_startup("  FFT CREATOR  ", "   Starting...  ", " 2023 (c) bobaa ");
 
     httpd_handle_t server_handle = NULL;
 

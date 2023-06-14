@@ -8,6 +8,26 @@ void initialize_oled(size_t screen_width, size_t screen_height) {
     ssd1306_contrast(&oled_display, 0xFF);
 }
 
+void oled_view_startup(char* header_line, char* information_line, char* version_line) {
+    ssd1306_clear_screen(&oled_display, false);
+
+    ssd1306_display_text(&oled_display, 0, header_line, 15, false);
+    ssd1306_display_text(&oled_display, 3, information_line, 16, false);
+    ssd1306_display_text(&oled_display, 7, version_line, 16, false);
+}
+
+void oled_view_error(char* message) {
+    ssd1306_clear_screen(&oled_display, false);
+
+    uint8_t error_icon[] = {
+        0x00, 0x00, 0x00, 0x00, 0x30, 0x60, 0x38, 0xe0, 0x1d, 
+        0xc0, 0x0f, 0x80, 0x07, 0x00, 0x0f, 0x80, 0x1d, 0xc0, 
+        0x38, 0xe0, 0x30, 0x60, 0x00, 0x00, 0x00, 0x00, 
+    };
+
+    ssd1306_bitmaps(&oled_display, ssd1306_get_width(&oled_display) - 100, ssd1306_get_height(&oled_display) - 20, error_icon, 16, 16, false);
+}
+
 void oled_view_fft(float* data, int32_t length, int width, int height, float minimum, float maximum) {
     uint8_t* view_data = calloc(width * height, sizeof(uint8_t));
     float* view_data_minimum = calloc(width, sizeof(float));
@@ -65,7 +85,7 @@ void oled_view_fft(float* data, int32_t length, int width, int height, float min
             int index = y * width + x;
             int value = !view_data[index];
             
-            _ssd1306_pixel(&oled_display, x, y, value);
+            ssd1306_pixel(&oled_display, x, y, value);
         }
     }
 

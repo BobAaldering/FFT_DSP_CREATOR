@@ -91,7 +91,7 @@ esp_err_t wave_post_handler(httpd_req_t* request) {
     for (int i = 0; i < NUMBER_OF_SAMPLES; i++)
         program_data.samples[i] = 0;
 
-    generate_waves_f32(program_data.waves, program_data.samples, NUMBER_OF_SAMPLES, program_data.number_of_waves);
+    ESP_ERROR_CHECK(generate_waves_f32(program_data.waves, program_data.samples, NUMBER_OF_SAMPLES, program_data.number_of_waves));
 
     const char* response = "Successful execution of the function 'wave_post_handler'!\n";
     httpd_resp_send(request, response, strlen(response));
@@ -117,9 +117,9 @@ esp_err_t fft_post_handler(httpd_req_t* request) {
 
     fft_data_t data_for_fft = {};
 
-    initialize_fft_f32(&data_for_fft);
-    apply_fft_f32(&data_for_fft, program_data.samples, program_data.window, NUMBER_OF_SAMPLES);
-    de_initialize_fft_f32(&data_for_fft);
+    ESP_ERROR_CHECK(initialize_fft_f32(&data_for_fft));
+    ESP_ERROR_CHECK(apply_fft_f32(&data_for_fft, program_data.samples, program_data.window, NUMBER_OF_SAMPLES));
+    ESP_ERROR_CHECK(de_initialize_fft_f32(&data_for_fft));
 
     const char* response = "Successful execution of the function 'fft_post_handler'!\n";
     httpd_resp_send(request, response, strlen(response));

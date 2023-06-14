@@ -13,6 +13,6 @@ typedef struct wave_config {
     float phase;
 } wave_config_t;
 
-extern void generate_waves_f32(wave_config_t* wave_configs, float* samples, size_t sample_length, size_t number_of_waves);
+extern esp_err_t generate_waves_f32(wave_config_t* wave_configs, float* samples, size_t sample_length, size_t number_of_waves);
 
 #endif

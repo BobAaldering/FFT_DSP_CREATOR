@@ -1,10 +1,10 @@
 #include "wave_transform.h"
 
-void generate_waves_f32(wave_config_t* wave_configs, float* samples, size_t sample_length, size_t number_of_waves) {
+esp_err_t generate_waves_f32(wave_config_t* wave_configs, float* samples, size_t sample_length, size_t number_of_waves) {
     if (wave_configs == NULL || samples == NULL) {
         ESP_LOGE(WAVE_TRANSFORM_TAG, "The values of '%s' and '%s' could not be 'NULL'!", "wave_configs", "samples");
 
-        return;
+        return ESP_FAIL;
     }
 
     for (int i = 0; i < number_of_waves; i++) {
@@ -24,4 +24,6 @@ void generate_waves_f32(wave_config_t* wave_configs, float* samples, size_t samp
 
         free(current_wave);
     }
+
+    return ESP_OK;
 }

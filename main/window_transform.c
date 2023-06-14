@@ -1,10 +1,10 @@
 #include "window_transform.h"
 
-bool apply_window_function(float* window, window_config_t window_config, size_t window_length) {
+esp_err_t apply_window_function(float* window, window_config_t window_config, size_t window_length) {
     if (window == NULL) {
         ESP_LOGE(WINDOW_TRANSFORM_TAG, "The value of '%s' could not be 'NULL'!", "window");
 
-        return false;
+        return ESP_FAIL;
     }
 
     window_function window_config_lookup[] = {
@@ -21,8 +21,8 @@ bool apply_window_function(float* window, window_config_t window_config, size_t 
         
         selected_window_function(window, window_length);
 
-        return true;
+        return ESP_OK;
     }
 
-    return false;
+    return ESP_FAIL;
 }
