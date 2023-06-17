@@ -40,8 +40,16 @@ void start_webserver(httpd_handle_t server_handle) {
         .user_ctx = NULL
     };
 
+    httpd_uri_t dac_uri = {
+        .uri = "/dac",
+        .method = HTTP_POST,
+        .handler = dac_post_handler,
+        .user_ctx = NULL
+    };
+
     httpd_register_uri_handler(server_handle, &wave_uri);
     httpd_register_uri_handler(server_handle, &fft_uri);
+    httpd_register_uri_handler(server_handle, &dac_uri);
 
     ESP_LOGI(WIFI_SERVER_TAG, "The webserver with all the URI handlers is started!");
 }
@@ -122,6 +130,36 @@ esp_err_t fft_post_handler(httpd_req_t* request) {
     ESP_ERROR_CHECK(de_initialize_fft_f32(&data_for_fft));
 
     const char* response = "Successful execution of the function 'fft_post_handler'!\n";
+    httpd_resp_send(request, response, strlen(response));
+
+    return ESP_OK;
+}
+
+esp_err_t dac_post_handler(httpd_req_t* request) {
+    char content[MAXIMUM_CONTENT_LENGTH] = {};
+
+    int return_length = httpd_req_recv(request, content, sizeof(content) / sizeof(content[0]));
+
+    if (return_length <= 0) {
+        if (return_length == HTTPD_SOCK_ERR_TIMEOUT)
+            httpd_resp_send_408(request);
+
+        return ESP_FAIL;
+    }
+
+    ESP_LOGI(WIFI_SERVER_TAG, "The 'dac_post_handler' function is invoked, with content '%s'", content);
+
+    dac_data.digital_samples = program_data.samples;
+    dac_data.number_of_samples = NUMBER_OF_SAMPLES;
+    dac_data.sent_values = 0;
+
+    dac_output_values();
+
+    //dac_data.digital_samples = NULL;
+    //dac_data.number_of_samples = 0;
+    //dac_data.sent_values = 0;
+
+    const char* response = "Successful execution of the function 'dac_post_handler'!\n";
     httpd_resp_send(request, response, strlen(response));
 
     return ESP_OK;

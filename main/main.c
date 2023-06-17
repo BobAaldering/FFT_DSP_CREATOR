@@ -2,6 +2,7 @@
 
 #include "nvs_flash.h"
 
+#include "dac_communicator.h"
 #include "display_communicator.h"
 #include "http_server.h"
 #include "wifi_pass.h"
@@ -9,6 +10,7 @@
 #define OLED_WIDTH (128)
 #define OLED_HEIGHT (64)
 
+dac_data_t dac_data;
 program_data_t program_data;
 SSD1306_t oled_display;
 

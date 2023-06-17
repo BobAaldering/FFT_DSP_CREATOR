@@ -12,7 +12,6 @@
 
 #define FFT_TRANSFORM_TAG ("FFT_TRANSFORM_H_")
 
-
 typedef struct fft_data {
     bool fft_is_initialized;
 } fft_data_t;

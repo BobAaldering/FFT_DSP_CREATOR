@@ -9,6 +9,7 @@
 #include "esp_netif.h"
 #include "esp_http_server.h"
 
+#include "dac_communicator.h"
 #include "fft_transform.h"
 #include "wave_transform.h"
 #include "window_transform.h"
@@ -41,6 +42,7 @@ extern void wifi_event_handler(void*, esp_event_base_t, int32_t event_id, void*)
 
 extern esp_err_t wave_post_handler(httpd_req_t* request);
 extern esp_err_t fft_post_handler(httpd_req_t* request);
+extern esp_err_t dac_post_handler(httpd_req_t* request);
 
 extern esp_err_t parse_wave_data(const char* json_data);
 extern esp_err_t parse_fft_data(const char* json_data);

@@ -84,7 +84,7 @@ void oled_view_fft(float* data, int32_t length, int width, int height, float min
         for (int x = 0; x < width; x++) {
             int index = y * width + x;
             int value = !view_data[index];
-            
+
             ssd1306_pixel(&oled_display, x, y, value);
         }
     }
