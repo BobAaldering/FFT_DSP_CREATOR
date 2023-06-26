@@ -95,7 +95,7 @@ esp_err_t oled_view_fft(float* fft_data, uint32_t fft_data_length, uint32_t samp
     char x_mid_buffer[UNIT_BUFFER_LENGTH] = {};
     char x_max_buffer[UNIT_BUFFER_LENGTH] = {};
 
-    int x_max_frequency_scale = (sample_data_length * sample_frequency) / sample_data_length;
+    int x_max_frequency_scale = ((sample_data_length * sample_frequency) / sample_data_length) / 2;
 
     itoa(x_max_frequency_scale / 2, x_mid_buffer, 10);
     itoa(x_max_frequency_scale, x_max_buffer, 10);
