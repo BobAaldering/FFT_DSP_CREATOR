@@ -76,7 +76,7 @@ In order to be able to work with this project in ESP-IDF, a number of steps must
     ```
     Be aware that after cloning two functions still need to be adjusted, that is `_ssd1306_pixel` and `_ssd1306_line`! Change the names to `ssd1306_pixel` and `ssd1306_line`.
 
-- In the `main` folder, a header file must be added, in which all Wi-Fi data must be entered according to your own SSID and password. The file should be called `wifi_info.h` and contain the following information:
+- In the `main` folder, a header file must be added, in which all Wi-Fi data must be entered according to your own SSID and password. The file should be called `wifi_pass.h` and contain the following information:
     ```c
     #ifndef WIFI_PASS_H_
     #define WIFI_PASS_H_
