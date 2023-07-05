@@ -27,7 +27,7 @@ Below are examples of how the URIs can be called via a command prompt, along wit
 
     **On Windows:**
     ```powershell
-    Invoke-RestMethod -Uri "http://xxx.xxx.x.xx/wave" -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"sample_frequency": 200, "waves": [{"amplitude": 1.65, "frequency": 60, "phase": 0.0, "offset": 0.0}, {"amplitude": 0.75, "frequency": 80, "phase": 0.0, "offset": 0.0}]} 
+    Invoke-RestMethod -Uri "http://xxx.xxx.x.xx/wave" -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"sample_frequency": 200, "waves": [{"amplitude": 1.65, "frequency": 60, "phase": 0.0, "offset": 0.0}, {"amplitude": 0.75, "frequency": 80, "phase": 0.0, "offset": 0.0}]}'
     ```
 
 - The application of the `/fft` URI:
